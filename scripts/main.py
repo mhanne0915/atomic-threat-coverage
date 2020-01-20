@@ -124,6 +124,7 @@ if __name__ == '__main__':
                            init=args.init)
 
     elif args.visualisations:
+        from pathlib import Path
         ATCconfig = ATCutils.load_config("config.yml")
         ATCconfig_default = ATCutils.load_config("config.default.yml")
         if not args.vis_output_dir:
@@ -134,6 +135,7 @@ if __name__ == '__main__':
             analytics_generated = analytics_generated if \
                 analytics_generated[-1] == "/" else analytics_generated + "/"
             output_path = analytics_generated + "visualizations/"
+            Path(output_path).mkdir(parents=True, exist_ok=True)
 
             if not args.vis_output_file_name:
                 output_name = ''.join(
